@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D _rb;
     private ReadPlayerInput _readPlayerInput;
     private GroundCheck _groundCheck;
+    private PlayerJump _playerJump;
     private float _horizontal;
 
     public float Horizontal => _horizontal;
@@ -21,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _readPlayerInput = GetComponent<ReadPlayerInput>();
         _groundCheck = GetComponent<GroundCheck>();
+        _playerJump = GetComponent<PlayerJump>();
     }
 
     void Update()

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8442257732440062013}
   - component: {fileID: 8442257732440062012}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 8442257732904345602}
   - component: {fileID: 8442257732904345601}
   - component: {fileID: 2640316835423920589}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 8442257733369403258}
   - component: {fileID: 221265101149780814}
   - component: {fileID: 704927305494557891}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}

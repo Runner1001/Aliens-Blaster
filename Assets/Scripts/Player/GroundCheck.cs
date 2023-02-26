@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GroundCheck : MonoBehaviour
 {
-    [SerializeField] float _foorOffset = 0.5f;
+    [SerializeField] float _footOffset = 0.5f;
     [SerializeField] private LayerMask _groundLayerMask;
 
     private SpriteRenderer _sr;
@@ -30,23 +30,23 @@ public class GroundCheck : MonoBehaviour
         _isOnSnow = false;
 
         Vector2 origin = new Vector2(transform.position.x, transform.position.y - _sr.bounds.extents.y);
-        RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.down, _groundLayerMask);
+        RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.down, 0.1f, _groundLayerMask);
         if (hit.collider)
         {
             _isGrounded = true;
             _isOnSnow = hit.collider.CompareTag("Snow");
         }
 
-        origin = new Vector2(transform.position.x - _foorOffset, transform.position.y - _sr.bounds.extents.y);
-        hit = Physics2D.Raycast(origin, Vector2.down, _groundLayerMask);
+        origin = new Vector2(transform.position.x - _footOffset, transform.position.y - _sr.bounds.extents.y);
+        hit = Physics2D.Raycast(origin, Vector2.down, 0.1f, _groundLayerMask);
         if (hit.collider)
         {
             _isGrounded = true;
             _isOnSnow = hit.collider.CompareTag("Snow");
         }
 
-        origin = new Vector2(transform.position.x + _foorOffset, transform.position.y - _sr.bounds.extents.y);
-        hit = Physics2D.Raycast(origin, Vector2.down, _groundLayerMask);
+        origin = new Vector2(transform.position.x + _footOffset, transform.position.y - _sr.bounds.extents.y);
+        hit = Physics2D.Raycast(origin, Vector2.down, 0.1f, _groundLayerMask);
         if (hit.collider)
         {
             _isGrounded = true;
@@ -62,10 +62,10 @@ public class GroundCheck : MonoBehaviour
         Vector2 origin = new Vector2(transform.position.x, transform.position.y - spriteRenderer.bounds.extents.y);
         Gizmos.DrawLine(origin, origin + Vector2.down * 0.1f);
 
-        origin = new Vector2(transform.position.x - _foorOffset, transform.position.y - spriteRenderer.bounds.extents.y);
+        origin = new Vector2(transform.position.x - _footOffset, transform.position.y - spriteRenderer.bounds.extents.y);
         Gizmos.DrawLine(origin, origin + Vector2.down * 0.1f);
 
-        origin = new Vector2(transform.position.x + _foorOffset, transform.position.y - spriteRenderer.bounds.extents.y);
+        origin = new Vector2(transform.position.x + _footOffset, transform.position.y - spriteRenderer.bounds.extents.y);
         Gizmos.DrawLine(origin, origin + Vector2.down * 0.1f);
     }
 }
