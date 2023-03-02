@@ -12,11 +12,23 @@ public class PlayerPanel : MonoBehaviour
 
     private Player _player;
 
+
     public void Bind(Player player)
     {
         _player = player;
         _player.OnCoinChanged += UpdateCoins;
+        _player.OnHealthChanged += UpdateHealth;
         UpdateCoins();
+        UpdateHealth();
+    }
+
+    private void UpdateHealth()
+    {
+        for (int i = 0; i < _hearts.Length; i++)
+        {
+            Image heart = _hearts[i];
+            heart.enabled = i < _player.Health;
+        }
     }
 
     private void UpdateCoins()

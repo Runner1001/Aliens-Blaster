@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class PlayerData
 {
-    public int Coins;
-    public int Health;
+    public int Coins = 0;
+    public int Health = 8;
 }

@@ -14,7 +14,9 @@ public class Coin : MonoBehaviour
         {
             GetComponent<AudioSource>().PlayOneShot(_coinClip);
             player.AddCoin();
-            gameObject.SetActive(false);
+            GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<Collider2D>().enabled = false;
+            //gameObject.SetActive(false);
         }
     }
 }
