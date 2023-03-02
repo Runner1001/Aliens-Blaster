@@ -11,7 +11,7 @@ public class KillOnEnter : MonoBehaviour
 
         if (player)
         {
-            player.TakeDamage();
+            player.TakeDamage(other.contacts[0].normal);
         }
     }
 }

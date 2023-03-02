@@ -396,6 +396,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82b6df26166419c44816c3e418069f0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hurtSfx: {fileID: 8300000, guid: b922c8c68d330144db4b2a2ad6f80f69, type: 3}
+  _knockbackForce: 400
 --- !u!1 &5475063970865293836
 GameObject:
   m_ObjectHideFlags: 0

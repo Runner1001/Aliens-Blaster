@@ -5,9 +5,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
-{
+{                                               //this class need a refactor for the SRP
     public event Action OnCoinChanged;
     public event Action OnHealthChanged;
+
+    [SerializeField] private AudioClip _hurtSfx;
+    [SerializeField] private float _knockbackForce = 300;
+
+    private Rigidbody2D _rb;
+    private AudioSource _audioSource;
 
     private PlayerData _playerData = new PlayerData();
 
@@ -17,6 +23,9 @@ public class Player : MonoBehaviour
     void Awake()
     {
         FindAnyObjectByType<PlayerCanvas>().Bind(this); //refactor
+
+        _rb = GetComponent<Rigidbody2D>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     public void Bind(PlayerData playerData)
@@ -30,7 +39,7 @@ public class Player : MonoBehaviour
         OnCoinChanged?.Invoke();
     }
 
-    public void TakeDamage()
+    public void TakeDamage(Vector2 hitNormal)
     {
         _playerData.Health--;
 
@@ -39,6 +48,9 @@ public class Player : MonoBehaviour
             SceneManager.LoadScene(0);
             return;
         }
+
+        _rb.AddForce(-hitNormal * _knockbackForce);
+        _audioSource.PlayOneShot(_hurtSfx);
 
         OnHealthChanged?.Invoke();
     }
