@@ -8,12 +8,12 @@ public class Coin : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        var playerWallet = other.GetComponent<PlayerWallet>();
+        var player = other.GetComponent<Player>();
 
-        if (playerWallet)
+        if (player)
         {
             GetComponent<AudioSource>().PlayOneShot(_coinClip);
-            playerWallet.AddCoin();
+            player.AddCoin();
             gameObject.SetActive(false);
         }
     }
