@@ -8,8 +8,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private List<PlayerData> _playerDatas = new List<PlayerData>();
     private PlayerInputManager _playerInputManager;
+    private GameData _gameData;
 
     public static GameManager Instance { get; private set; }
 
@@ -51,12 +51,18 @@ public class GameManager : MonoBehaviour
 
     private PlayerData GetPlayerData(int playerIndex)
     {
-        if(_playerDatas.Count <= playerIndex)
+        if(_gameData.PlayerDatas.Count <= playerIndex)
         {
             var playerData = new PlayerData();
-            _playerDatas.Add(playerData);
+            _gameData.PlayerDatas.Add(playerData);
         }
 
-        return _playerDatas[playerIndex];
+        return _gameData.PlayerDatas[playerIndex];
+    }
+
+    public void NewGame()
+    {
+        _gameData = new GameData(); //a way to reset game data
+        SceneManager.LoadScene("Level 1");
     }
 }
