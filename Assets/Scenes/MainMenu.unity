@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 206642139}
   - component: {fileID: 206642138}
   - component: {fileID: 206642137}
-  - component: {fileID: 206642136}
+  - component: {fileID: 206642140}
   m_Layer: 5
   m_Name: Load Game Button
   m_TagString: Untagged
@@ -164,18 +164,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 87}
   m_SizeDelta: {x: 400, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &206642136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 206642134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f51ebb49db2989b48a89ea5335b1a5d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &206642137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,6 +246,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 206642134}
   m_CullTransparentMesh: 1
+--- !u!114 &206642140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 206642134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dff0313033675c4db6d2ba85277102b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &365273701
 GameObject:
   m_ObjectHideFlags: 0
