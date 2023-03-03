@@ -2,11 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     private List<PlayerData> _playerDatas = new List<PlayerData>();
+    private PlayerInputManager _playerInputManager;
 
     public static GameManager Instance { get; private set; }
 
@@ -20,7 +23,22 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
-        GetComponent<PlayerInputManager>().onPlayerJoined += HandlePlayerJoined;
+
+        _playerInputManager = GetComponent<PlayerInputManager>();
+
+        _playerInputManager.onPlayerJoined += HandlePlayerJoined;
+
+        SceneManager.sceneLoaded += HandleLoadedScene;
+    }
+
+    private void HandleLoadedScene(Scene arg0, LoadSceneMode arg1)
+    {
+        if(arg0.buildIndex == 0)       
+            _playerInputManager.joinBehavior = PlayerJoinBehavior.JoinPlayersManually;
+        
+        else       
+            _playerInputManager.joinBehavior= PlayerJoinBehavior.JoinPlayersWhenButtonIsPressed;
+        
     }
 
     private void HandlePlayerJoined(PlayerInput playerInput)
