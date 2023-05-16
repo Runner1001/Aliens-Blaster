@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -8,6 +9,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public List<string> AllGameNames = new List<string>();
+
     private PlayerInputManager _playerInputManager;
     private GameData _gameData;
 
@@ -29,6 +32,10 @@ public class GameManager : MonoBehaviour
         _playerInputManager.onPlayerJoined += HandlePlayerJoined;
 
         SceneManager.sceneLoaded += HandleLoadedScene;
+
+        string commaSeparatedList = PlayerPrefs.GetString("AllGameNames");
+        Debug.Log(commaSeparatedList);
+        AllGameNames = commaSeparatedList.Split(',').ToList();
     }
 
     private void HandleLoadedScene(Scene arg0, LoadSceneMode arg1)
@@ -46,7 +53,14 @@ public class GameManager : MonoBehaviour
     private void SaveGame()
     {
         string text = JsonUtility.ToJson(_gameData);
-        PlayerPrefs.SetString("Game1", text);
+
+        if(AllGameNames.Contains(_gameData.GameName) == false)
+            AllGameNames.Add(_gameData.GameName);
+
+        string commaSeparatedGameNames = string.Join(",", AllGameNames);
+
+        PlayerPrefs.SetString("AllGameNames", commaSeparatedGameNames);
+        PlayerPrefs.SetString(_gameData.GameName, text);
         PlayerPrefs.Save();
     }
 
@@ -79,6 +93,7 @@ public class GameManager : MonoBehaviour
     public void NewGame()
     {
         _gameData = new GameData(); //a way to reset game data
+        _gameData.GameName = DateTime.Now.ToString("G");
         SceneManager.LoadScene("Level 1");
     }
 }
