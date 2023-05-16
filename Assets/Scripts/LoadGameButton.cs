@@ -10,7 +10,11 @@ public class LoadGameButton : MonoBehaviour
     void Start() => GetComponent<Button>().onClick.AddListener(LoadGame);
 
     public void LoadGame() => GameManager.Instance.LoadGame(_gameName);
-    public void DeleteGame() => GameManager.Instance.DeleteGame(_gameName);
+    public void DeleteGame()
+    {
+        GameManager.Instance.DeleteGame(_gameName);
+        Destroy(gameObject);
+    }
 
     public void SetGameName(string gameName)
     {
