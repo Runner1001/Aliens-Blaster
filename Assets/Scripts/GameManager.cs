@@ -64,9 +64,9 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    public void LoadGame()
+    public void LoadGame(string gameName)
     {
-        string text = PlayerPrefs.GetString("Game1");
+        string text = PlayerPrefs.GetString(gameName);
         _gameData = JsonUtility.FromJson<GameData>(text);
         SceneManager.LoadScene("Level 1");
     }
