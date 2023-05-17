@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -53,5 +54,10 @@ public class PlayerJump : MonoBehaviour
             _vertical = _jumpVelocity;
 
         _rb.velocity = new Vector2(_playerMovement.Horizontal, _vertical);
+    }
+
+    public void StopJump()
+    {
+        _jumpEndTime = Time.time;
     }
 }
