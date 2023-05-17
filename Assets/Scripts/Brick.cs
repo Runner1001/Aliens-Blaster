@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,9 @@ using UnityEngine;
 public class Brick : MonoBehaviour
 {
     [SerializeField] private ParticleSystem _brickParticleEffect;
+    [SerializeField] private float _laserDestructionTime = 1f;
+
+    private float _damegeTaken;
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -20,8 +24,20 @@ public class Brick : MonoBehaviour
         if (dot > 0.5f)
         {
             player.StopJump();
-            Instantiate(_brickParticleEffect, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            Explode();
         }
+    }
+
+    public void TakeLaserDamage()
+    {
+        _damegeTaken += Time.deltaTime;
+        if (_damegeTaken >= _laserDestructionTime)
+            Explode();
+    }
+
+    private void Explode()
+    {
+        Instantiate(_brickParticleEffect, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }

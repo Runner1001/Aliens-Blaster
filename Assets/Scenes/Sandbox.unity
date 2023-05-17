@@ -1774,9 +1774,9 @@ MonoBehaviour:
   _on:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1321604138}
-        m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
-        m_MethodName: set_enabled
+      - m_Target: {fileID: 1321604141}
+        m_TargetAssemblyTypeName: Laser, Assembly-CSharp
+        m_MethodName: Toggle
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1789,9 +1789,9 @@ MonoBehaviour:
   _off:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1321604138}
-        m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
-        m_MethodName: set_enabled
+      - m_Target: {fileID: 1321604141}
+        m_TargetAssemblyTypeName: Laser, Assembly-CSharp
+        m_MethodName: Toggle
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
