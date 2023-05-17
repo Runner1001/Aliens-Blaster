@@ -8,7 +8,23 @@ public class Brick : MonoBehaviour
     [SerializeField] private ParticleSystem _brickParticleEffect;
     [SerializeField] private float _laserDestructionTime = 1f;
 
-    private float _damegeTaken;
+    private SpriteRenderer _sr;
+    private float _damageTaken;
+    private float _resetColorTime;
+
+    void Awake()
+    {
+        _sr = GetComponent<SpriteRenderer>();
+    }
+
+    void Update()
+    {
+        if(_resetColorTime > 0 && Time.time >= _resetColorTime)
+        {
+            _resetColorTime = 0;
+            _sr.color = Color.white;
+        }
+    }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -30,8 +46,11 @@ public class Brick : MonoBehaviour
 
     public void TakeLaserDamage()
     {
-        _damegeTaken += Time.deltaTime;
-        if (_damegeTaken >= _laserDestructionTime)
+        _sr.color = Color.red;
+        _resetColorTime = Time.time + 0.1f;
+
+        _damageTaken += Time.deltaTime;
+        if (_damageTaken >= _laserDestructionTime)
             Explode();
     }
 

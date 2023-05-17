@@ -29,9 +29,7 @@ public class Laser : MonoBehaviour
             endPoint = firstHit.point;
             var brick = firstHit.collider.GetComponent<Brick>();
             if (brick)
-                brick.TakeLaserDamage();
-            
-           
+                brick.TakeLaserDamage();          
         }
 
         _lineRenderer.SetPosition(1, endPoint);
