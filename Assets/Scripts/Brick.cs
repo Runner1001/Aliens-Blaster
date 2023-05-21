@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Brick : MonoBehaviour
+public class Brick : MonoBehaviour, ITakeLaserDamage
 {
     [SerializeField] private ParticleSystem _brickParticleEffect;
     [SerializeField] private float _laserDestructionTime = 1f;

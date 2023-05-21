@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
-public class Ladybug : MonoBehaviour
+public class Ladybug : MonoBehaviour, ITakeLaserDamage
 {
     [SerializeField] private float _speed = 1f;
     [SerializeField] private Vector2 _direction = Vector2.left;
@@ -30,9 +31,9 @@ public class Ladybug : MonoBehaviour
 
         var downOrigin = GetDownRayPosition(_col);
         var downHits = Physics2D.RaycastAll(downOrigin, Vector2.down, _raycastDistance);
-        foreach(var hit in downHits)
+        foreach (var hit in downHits)
         {
-            if(hit.collider != null && hit.collider.gameObject != gameObject)
+            if (hit.collider != null && hit.collider.gameObject != gameObject)
                 canContinueWalking = true;
         }
 
@@ -79,5 +80,10 @@ public class Ladybug : MonoBehaviour
             return new Vector2(bounds.center.x - bounds.extents.x, bounds.center.y - bounds.extents.y);
         else
             return new Vector2(bounds.center.x + bounds.extents.x, bounds.center.y - bounds.extents.y);
+    }
+
+    public void TakeLaserDamage()
+    {
+        _rb.velocity = Vector2.zero;
     }
 }
