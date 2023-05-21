@@ -54,4 +54,9 @@ public class Player : MonoBehaviour
 
         OnHealthChanged?.Invoke();
     }
+
+    public void Bounce(Vector2 normal, float bounciness)
+    {
+        _rb.AddForce(-normal * bounciness);
+    }
 }
