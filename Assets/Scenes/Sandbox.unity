@@ -3834,14 +3834,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5475063971113245320, guid: 934083f211ab2eb48a7e07a812b1e421, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5475063971113245320, guid: 934083f211ab2eb48a7e07a812b1e421, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4220,7 +4212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2862247480252344158, guid: 0149b200d6894b246899460145f9dcfd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.89
+      value: -0.91
       objectReference: {fileID: 0}
     - target: {fileID: 2862247480252344158, guid: 0149b200d6894b246899460145f9dcfd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4341,6 +4333,14 @@ PrefabInstance:
       value: Moving Sand Platform 4
       objectReference: {fileID: 0}
     - target: {fileID: 6426306625662765223, guid: 3fdb3ad912d746f45a64b1b12843f49c, type: 3}
+      propertyPath: _pos1.x
+      value: -16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6426306625662765223, guid: 3fdb3ad912d746f45a64b1b12843f49c, type: 3}
+      propertyPath: _pos1.y
+      value: 1.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 6426306625662765223, guid: 3fdb3ad912d746f45a64b1b12843f49c, type: 3}
       propertyPath: _pos2.x
       value: -16
       objectReference: {fileID: 0}
@@ -4358,7 +4358,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6426306625662765224, guid: 3fdb3ad912d746f45a64b1b12843f49c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.55
+      value: 1.45
       objectReference: {fileID: 0}
     - target: {fileID: 6426306625662765224, guid: 3fdb3ad912d746f45a64b1b12843f49c, type: 3}
       propertyPath: m_LocalPosition.z
