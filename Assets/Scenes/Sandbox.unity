@@ -2698,6 +2698,7 @@ GameObject:
   - component: {fileID: 1562297496}
   - component: {fileID: 1562297495}
   - component: {fileID: 1562297494}
+  - component: {fileID: 1562297500}
   m_Layer: 0
   m_Name: Ladybug
   m_TagString: Untagged
@@ -2718,8 +2719,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 1
-  _direction: {x: -1, y: 0}
   _raycastDistance: 0.2
+  _forwardRaycastLayerMask:
+    serializedVersion: 2
+    m_Bits: 119
 --- !u!70 &1562297495
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2869,6 +2872,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1562297500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562297493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6d8af9ba1e0e774b96c6cfac6a9a8f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ignoreFromTop: 1
 --- !u!1 &1609755581
 GameObject:
   m_ObjectHideFlags: 0

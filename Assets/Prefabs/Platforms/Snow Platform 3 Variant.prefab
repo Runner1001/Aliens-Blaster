@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1236969666414981644, guid: ed896280bce50b64384e34f85962d5f9, type: 3}
       propertyPath: m_Name
-      value: Snow Platform 3
+      value: Snow Platform 3 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3527116813360864077, guid: ed896280bce50b64384e34f85962d5f9, type: 3}
       propertyPath: m_Sprite

@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class KillOnEnter : MonoBehaviour
+public class DamagePlayer : MonoBehaviour
 {
+    [SerializeField] private bool _ignoreFromTop;
+
     void OnCollisionEnter2D(Collision2D other)
     {
+        if (_ignoreFromTop && Vector2.Dot(other.contacts[0].normal, Vector2.down) > 0.5f)
+            return;
+
         var player = other.collider.GetComponent<Player>();
 
         if (player)

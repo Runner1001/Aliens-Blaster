@@ -8,12 +8,13 @@ using UnityEngine;
 public class Ladybug : MonoBehaviour, ITakeLaserDamage
 {
     [SerializeField] private float _speed = 1f;
-    [SerializeField] private Vector2 _direction = Vector2.left;
     [SerializeField] private float _raycastDistance = 0.2f;
+    [SerializeField] private LayerMask _forwardRaycastLayerMask;
 
     private Rigidbody2D _rb;
     private SpriteRenderer _sr;
     private Collider2D _col;
+    private Vector2 _direction = Vector2.left;
 
     void Start()
     {
@@ -24,9 +25,33 @@ public class Ladybug : MonoBehaviour, ITakeLaserDamage
 
     void Update()
     {
+        CheckGroundInFront();
+        CheckInFront();
+
+        _rb.velocity = new Vector2(_direction.x * _speed, _rb.velocity.y);
+    }
+
+    private void CheckInFront()
+    {
         Vector2 offset = _direction * _col.bounds.extents.x;
         Vector2 origin = (Vector2)transform.position + offset;
 
+
+        var hits = Physics2D.RaycastAll(origin, _direction, _raycastDistance, _forwardRaycastLayerMask);
+
+        foreach (var hit in hits)
+        {
+            if (hit.collider != null && hit.collider.gameObject != gameObject)
+            {
+                _direction *= -1;
+                _sr.flipX = _direction == Vector2.right;
+                break;
+            }
+        }
+    }
+
+    private void CheckGroundInFront()
+    {
         bool canContinueWalking = false;
 
         var downOrigin = GetDownRayPosition(_col);
@@ -43,20 +68,6 @@ public class Ladybug : MonoBehaviour, ITakeLaserDamage
             _sr.flipX = _direction == Vector2.right;
             return;
         }
-
-        var hits = Physics2D.RaycastAll(origin, _direction, _raycastDistance);
-
-        foreach (var hit in hits)
-        {
-            if (hit.collider != null && hit.collider.gameObject != gameObject)
-            {
-                _direction *= -1;
-                _sr.flipX = _direction == Vector2.right;
-                break;
-            }
-        }
-
-        _rb.velocity = new Vector2(_direction.x * _speed, _rb.velocity.y);
     }
 
     void OnDrawGizmos()

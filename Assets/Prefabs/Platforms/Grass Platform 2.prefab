@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2847764856302457937}
   - component: {fileID: 6592828314140953180}
   - component: {fileID: 7841506149035076828}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: grassRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 143106450328388044}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Grass Platform 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 5181821317197570853}
   - component: {fileID: 5112298251680887601}
   - component: {fileID: 8543375047326870827}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: grassLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}

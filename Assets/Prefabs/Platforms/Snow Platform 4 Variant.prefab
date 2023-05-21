@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: e733303f31b120645a1712271bd1578f, type: 3}
     - target: {fileID: 1647572390047729704, guid: 48a260f8acfe5424d97526acae91e0c1, type: 3}
       propertyPath: m_Name
-      value: Snow Platform 4
+      value: Snow Platform 4 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2894966140757617016, guid: 48a260f8acfe5424d97526acae91e0c1, type: 3}
       propertyPath: m_Sprite
