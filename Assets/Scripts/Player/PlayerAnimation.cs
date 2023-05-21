@@ -6,13 +6,12 @@ public class PlayerAnimation : MonoBehaviour
 {
     private Animator _anim;
     private PlayerMovement _playerMovement;
-    private PlayerJump _playerJump;
     private GroundCheck _groundCheck;
     private SpriteRenderer _sr;
 
     void Start()
     {
-        _anim = GetComponent<Animator>();
+        _anim = GetComponentInChildren<Animator>();
         _sr = GetComponent<SpriteRenderer>();
         _playerMovement = GetComponent<PlayerMovement>();
         _groundCheck = GetComponent<GroundCheck>();
@@ -25,8 +24,9 @@ public class PlayerAnimation : MonoBehaviour
 
     private void UpdateSpriteAndAnimation()
     {
-        _anim.SetBool("IsGrounded", _groundCheck.IsGrounded);
-        _anim.SetFloat("HorizontalSpeed", Mathf.Abs(_playerMovement.Horizontal));
+        _anim.SetBool("Jump", !_groundCheck.IsGrounded);
+        _anim.SetBool("Move", _playerMovement.Horizontal != 0);
+        //_anim.SetFloat("HorizontalSpeed", Mathf.Abs(_playerMovement.Horizontal));
 
         if (_playerMovement.Horizontal > 0)
             _sr.flipX = false;
