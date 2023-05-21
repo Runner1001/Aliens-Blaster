@@ -7,12 +7,10 @@ public class PlayerAnimation : MonoBehaviour
     private Animator _anim;
     private PlayerMovement _playerMovement;
     private GroundCheck _groundCheck;
-    private SpriteRenderer _sr;
 
     void Start()
     {
         _anim = GetComponentInChildren<Animator>();
-        _sr = GetComponent<SpriteRenderer>();
         _playerMovement = GetComponent<PlayerMovement>();
         _groundCheck = GetComponent<GroundCheck>();
     }
@@ -29,8 +27,8 @@ public class PlayerAnimation : MonoBehaviour
         //_anim.SetFloat("HorizontalSpeed", Mathf.Abs(_playerMovement.Horizontal));
 
         if (_playerMovement.Horizontal > 0)
-            _sr.flipX = false;
+            _anim.transform.rotation = Quaternion.identity;
         else if (_playerMovement.Horizontal < 0)
-            _sr.flipX = true;
+            _anim.transform.rotation = Quaternion.Euler(0, 180, 0);
     }
 }

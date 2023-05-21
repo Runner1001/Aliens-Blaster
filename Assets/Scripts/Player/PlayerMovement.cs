@@ -35,7 +35,25 @@ public class PlayerMovement : MonoBehaviour
         var desiredHorizontal = _readPlayerInput.Horizontal * _maxSpeed;
         var acceleration = _groundCheck.IsOnSnow ? _snowAcceleration : _groundAcceleration;
 
-        _horizontal = Mathf.Lerp(_horizontal, desiredHorizontal, Time.deltaTime * acceleration);
+        //_horizontal = Mathf.Lerp(_horizontal, desiredHorizontal, Time.deltaTime * acceleration);
+
+        if(desiredHorizontal > _horizontal)
+        {
+            _horizontal += acceleration * Time.deltaTime;
+            if(_horizontal > desiredHorizontal )
+            {
+                _horizontal = desiredHorizontal;
+            }
+        }
+        else if(desiredHorizontal < _horizontal)
+        {
+            _horizontal -= acceleration * Time.deltaTime;
+            if (_horizontal < desiredHorizontal)
+            {
+                _horizontal = desiredHorizontal;
+            }
+        }
+
         _rb.velocity = new Vector2(_horizontal, _rb.velocity.y);
     }
 }
