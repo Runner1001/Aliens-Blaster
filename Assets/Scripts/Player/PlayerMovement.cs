@@ -10,16 +10,19 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _snowAcceleration = 1;
 
     private Rigidbody2D _rb;
+    private Animator _anim;
     private ReadPlayerInput _readPlayerInput;
     private GroundCheck _groundCheck;
     private PlayerJump _playerJump;
     private float _horizontal;
 
     public float Horizontal => _horizontal;
+    public Vector2 Direction { get; private set; } = Vector2.right;
 
-    void Start()
+    void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _anim = GetComponentInChildren<Animator>();
         _readPlayerInput = GetComponent<ReadPlayerInput>();
         _groundCheck = GetComponent<GroundCheck>();
         _playerJump = GetComponent<PlayerJump>();
@@ -28,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         Movement();
+        UpdateDirection();
     }
 
     private void Movement()
@@ -55,5 +59,19 @@ public class PlayerMovement : MonoBehaviour
         }
 
         _rb.velocity = new Vector2(_horizontal, _rb.velocity.y);
+    }
+
+    private void UpdateDirection()
+    {
+        if (_horizontal > 0)
+        {
+            _anim.transform.rotation = Quaternion.identity;
+            Direction = Vector2.right;
+        }
+        else if (_horizontal < 0)
+        {
+            _anim.transform.rotation = Quaternion.Euler(0, 180, 0);
+            Direction = Vector2.left;
+        }
     }
 }

@@ -14,7 +14,7 @@ public class ReadPlayerInput : MonoBehaviour
     public bool IsJumping => _isJumping;
     public bool JumpWasPerformed => _jumpWasPerformed;
 
-    void Start()
+    void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();
     }

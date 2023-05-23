@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &112537458
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 112537459}
+  m_Layer: 0
+  m_Name: Fire Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &112537459
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112537458}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.626, y: 0.164, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1776174814206134038}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5475063970682911834
 GameObject:
   m_ObjectHideFlags: 0
@@ -19,9 +50,9 @@ GameObject:
   - component: {fileID: 5475063970682911825}
   - component: {fileID: 5475063970682911824}
   - component: {fileID: 5475063970682911828}
-  - component: {fileID: 2084598641}
   - component: {fileID: 2084598653}
   - component: {fileID: 1005402777870254512}
+  - component: {fileID: 7897692793302859090}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -336,7 +367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxSpeed: 5
-  _groundAcceleration: 20
+  _groundAcceleration: 25
   _snowAcceleration: 1
 --- !u!114 &5475063970682911828
 MonoBehaviour:
@@ -353,26 +384,6 @@ MonoBehaviour:
   _jumpVelocity: 3
   _jumpDuration: 0.5
   maxJumps: 2
---- !u!95 &2084598641
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5475063970682911834}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8c62ab7ef1256694f9df327a32417326, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
 --- !u!114 &2084598653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,6 +410,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hurtSfx: {fileID: 8300000, guid: b922c8c68d330144db4b2a2ad6f80f69, type: 3}
   _knockbackForce: 400
+--- !u!114 &7897692793302859090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5475063970682911834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c415cf13faed3884d9dfbb95dd5f8f2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _blasetShotPrefab: {fileID: 5360413542486495321, guid: bf62bb788a5036b4bb549ab07d1fc81a, type: 3}
+  _firePoint: {fileID: 112537459}
 --- !u!1 &5475063970865293836
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,7 +653,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -963,9 +988,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1776174814450263652, guid: 691aa0bbcaf112744846774c2a8b4e6b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 112537459}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 691aa0bbcaf112744846774c2a8b4e6b, type: 3}
+--- !u!4 &1776174814206134038 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1776174814450263652, guid: 691aa0bbcaf112744846774c2a8b4e6b, type: 3}
+  m_PrefabInstance: {fileID: 1905074546}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4283367918689812365 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4283367920542834431, guid: 691aa0bbcaf112744846774c2a8b4e6b, type: 3}

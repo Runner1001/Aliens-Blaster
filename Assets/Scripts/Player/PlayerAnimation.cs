@@ -26,9 +26,6 @@ public class PlayerAnimation : MonoBehaviour
         _anim.SetBool("Move", _playerMovement.Horizontal != 0);
         //_anim.SetFloat("HorizontalSpeed", Mathf.Abs(_playerMovement.Horizontal));
 
-        if (_playerMovement.Horizontal > 0)
-            _anim.transform.rotation = Quaternion.identity;
-        else if (_playerMovement.Horizontal < 0)
-            _anim.transform.rotation = Quaternion.Euler(0, 180, 0);
+        
     }
 }
