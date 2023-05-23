@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -26,6 +27,16 @@ public class Player : MonoBehaviour
 
         _rb = GetComponent<Rigidbody2D>();
         _audioSource = GetComponent<AudioSource>();
+    }
+
+    void OnEnable()
+    {
+        FindObjectOfType<CinemachineTargetGroup>()?.AddMember(transform, 1f, 1f);
+    }
+
+    void OnDisable()
+    {
+        FindObjectOfType<CinemachineTargetGroup>()?.RemoveMember(transform);
     }
 
     public void Bind(PlayerData playerData)
