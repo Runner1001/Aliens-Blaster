@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6d8af9ba1e0e774b96c6cfac6a9a8f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _ignoreFromTop: 0
 --- !u!60 &5940846094373644131
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -230,7 +231,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 10
+  MaxDistance: 20
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0

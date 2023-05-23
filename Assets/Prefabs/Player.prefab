@@ -76,7 +76,6 @@ GameObject:
   - component: {fileID: 5475063970682911838}
   - component: {fileID: 5475063970682911837}
   - component: {fileID: 5475063970682911836}
-  - component: {fileID: 5475063970682911835}
   - component: {fileID: 5475063970682911829}
   - component: {fileID: 5475063970682911827}
   - component: {fileID: 5475063970682911826}
@@ -105,10 +104,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8836000197417740788}
   - {fileID: 4283367918689812365}
+  - {fileID: 8836000197417740788}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5475063970682911838
 SpriteRenderer:
@@ -224,14 +223,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.75, y: 2}
   m_Direction: 0
---- !u!81 &5475063970682911835
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5475063970682911834}
-  m_Enabled: 1
 --- !u!82 &5475063970682911829
 AudioSource:
   m_ObjectHideFlags: 0
@@ -496,7 +487,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5475063970865293836}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
   m_Name: 
@@ -751,7 +742,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5475063971113245300}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
   m_Name: 
