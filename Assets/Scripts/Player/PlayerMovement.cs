@@ -8,12 +8,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _maxSpeed = 5;
     [SerializeField] private float _groundAcceleration = 20;
     [SerializeField] private float _snowAcceleration = 1;
+    [SerializeField]private Collider2D _duckCollider;
+    [SerializeField]private Collider2D _standingCollider;
 
     private Rigidbody2D _rb;
     private Animator _anim;
     private ReadPlayerInput _readPlayerInput;
     private GroundCheck _groundCheck;
-    private PlayerJump _playerJump;
+    private PlayerAnimation _playerAnimation;
     private float _horizontal;
 
     public float Horizontal => _horizontal;
@@ -25,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
         _anim = GetComponentInChildren<Animator>();
         _readPlayerInput = GetComponent<ReadPlayerInput>();
         _groundCheck = GetComponent<GroundCheck>();
-        _playerJump = GetComponent<PlayerJump>();
+        _playerAnimation = GetComponent<PlayerAnimation>();
     }
 
     void Update()
@@ -38,6 +40,14 @@ public class PlayerMovement : MonoBehaviour
     {
         var desiredHorizontal = _readPlayerInput.Horizontal * _maxSpeed;
         var acceleration = _groundCheck.IsOnSnow ? _snowAcceleration : _groundAcceleration;
+
+        bool isDucking = _playerAnimation.IsDucking;
+
+        if (isDucking)
+            desiredHorizontal = 0;
+
+        _duckCollider.enabled = isDucking;
+        _standingCollider.enabled = !isDucking;
 
         //_horizontal = Mathf.Lerp(_horizontal, desiredHorizontal, Time.deltaTime * acceleration);
 

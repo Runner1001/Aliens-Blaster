@@ -7,14 +7,14 @@ public class Laser : MonoBehaviour
     [SerializeField] private Vector2 _direction = Vector2.left;
     [SerializeField] private float _distance = 10f;
     [SerializeField] private SpriteRenderer _laserBurst;
+    [SerializeField] private LineRenderer _lineRenderer;
 
-    private LineRenderer _lineRenderer;
     private bool _isOn;
 
     void Awake()
-    {
-        _lineRenderer = GetComponent<LineRenderer>();
+    {       
         Toggle(false);
+        
     }
 
     void Update()
@@ -44,6 +44,21 @@ public class Laser : MonoBehaviour
         }
 
         _lineRenderer.SetPosition(1, endPoint);
+    }
+
+    void OnValidate()
+    {
+        _lineRenderer = GetComponent<LineRenderer>();
+        _lineRenderer.SetPosition(0, transform.position);
+
+        var endPoint = (Vector2)transform.position + (_direction * _distance);
+
+        var firstHit = Physics2D.Raycast(transform.position, _direction, _distance);
+        if (firstHit.collider)
+            endPoint = firstHit.point;
+
+        _lineRenderer.SetPosition(1, endPoint);
+        _laserBurst.transform.position = endPoint;
     }
 
     public void Toggle(bool state)
