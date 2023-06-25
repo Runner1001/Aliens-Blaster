@@ -16,12 +16,21 @@ public class Blaster : MonoBehaviour
     {
         _playerInput = GetComponent<PlayerInput>();
         _playerMovement = GetComponent<PlayerMovement>();
-        _playerInput.actions["Fire"].performed += TryFire;
+        //_playerInput.actions["Fire"].performed += TryFire;
     }
 
-    private void TryFire(InputAction.CallbackContext obj)
+    void Update()
     {
-        BlasterShot shot = Instantiate(_blasetShotPrefab, _firePoint.position, Quaternion.identity);
-        shot.Launch(_playerMovement.Direction);
+        if(_playerInput.actions["Fire"].ReadValue<float>() > 0)
+        {
+            BlasterShot shot = PoolManager.Instance.GetBlasterShot();
+            shot.Launch(_playerMovement.Direction, _firePoint.position);
+        }
     }
+
+    //private void TryFire(InputAction.CallbackContext obj)
+    //{
+    //    BlasterShot shot = Instantiate(_blasetShotPrefab, _firePoint.position, Quaternion.identity);
+    //    shot.Launch(_playerMovement.Direction, _firePoint.position);
+    //}
 }
