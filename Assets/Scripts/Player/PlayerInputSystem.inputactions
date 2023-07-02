@@ -304,6 +304,17 @@
                     "action": "EquipNext",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7bbc2db9-8c92-4b97-8116-10889290f17b",
+                    "path": "<XInputController>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EquipNext",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
