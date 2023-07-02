@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField] private AudioClip _hurtSfx;
     [SerializeField] private float _knockbackForce = 300;
 
+
     private Rigidbody2D _rb;
     private AudioSource _audioSource;
 
