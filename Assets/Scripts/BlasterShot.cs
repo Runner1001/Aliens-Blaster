@@ -13,6 +13,7 @@ public class BlasterShot : MonoBehaviour
     private Vector2 _direction = Vector2.right;
     private ObjectPool<BlasterShot> _pool;
     private float _selfDestructionTime;
+    private bool _exploded;
 
     void Awake()
     {
@@ -33,9 +34,12 @@ public class BlasterShot : MonoBehaviour
         var damageable = collision.gameObject.GetComponent<ITakeDamage>();
         damageable?.TakeDamage();
 
-        PoolManager.Instance.GetBlasterShotExplosion(collision.contacts[0].point);
-
-        SelfDestruction();
+        if(_exploded == false)
+        {
+            _exploded = true;
+            PoolManager.Instance.GetBlasterShotExplosion(collision.contacts[0].point);
+            SelfDestruction();
+        }
     }
 
     public void Launch(Vector2 direction, Vector2 position)
@@ -44,6 +48,7 @@ public class BlasterShot : MonoBehaviour
         _direction = direction;
         transform.rotation = _direction == Vector2.left ? Quaternion.Euler(0, 180, 0) : Quaternion.identity;
         _selfDestructionTime = Time.time + _maxLifeTime;
+        _exploded = false;
     }
 
     private void SelfDestruction()
