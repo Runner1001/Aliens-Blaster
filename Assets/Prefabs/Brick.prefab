@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3724264100503452925}
   - component: {fileID: 3724264100503452926}
   - component: {fileID: 3724264100503452927}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Brick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3724264100503452925
 SpriteRenderer:
@@ -144,3 +144,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _brickParticleEffect: {fileID: 1390296538801199520, guid: 5b03524b26aa7d44b8949a77c86ee91b, type: 3}
+  _laserDestructionTime: 1
+  _shotsToDestroy: 3

@@ -54,3 +54,6 @@ TagManager:
   - name: Props
     uniqueID: 2472791733
     locked: 0
+  - name: Enemies
+    uniqueID: 2686563995
+    locked: 0
