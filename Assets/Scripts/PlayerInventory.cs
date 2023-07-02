@@ -9,16 +9,21 @@ public class PlayerInventory : MonoBehaviour
     public Transform ItemPoint;
 
     private PlayerInput _playerInput;
-    private List<Key> _items = new List<Key>();
+    private List<IItem> _items = new List<IItem>();
     private int _currentItemIndex;
 
-    public Key EquippedKey => _items.Count >= _currentItemIndex ? _items[_currentItemIndex] : null;
+    public IItem EquippedItem => _items.Count >= _currentItemIndex ? _items[_currentItemIndex] : null;
 
     void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();
         _playerInput.actions["Fire"].performed += UseEquippedItem;
         _playerInput.actions["EquipNext"].performed += EquipNext;
+
+        foreach (var item in GetComponentsInChildren<IItem>())
+        {
+            PickUp(item);
+        }
     }
 
     private void EquipNext(InputAction.CallbackContext obj)
@@ -42,15 +47,15 @@ public class PlayerInventory : MonoBehaviour
 
     private void UseEquippedItem(InputAction.CallbackContext obj)
     {
-        if(EquippedKey)
-            EquippedKey.Use();
+        if(EquippedItem != null)
+            EquippedItem.Use();
     }
 
-    public void PickUp(Key key)
+    public void PickUp(IItem item)
     {
-        key.transform.SetParent(ItemPoint);
-        key.transform.localPosition = Vector3.zero;
-        _items.Add(key);
+        item.transform.SetParent(ItemPoint);
+        item.transform.localPosition = Vector3.zero;
+        _items.Add(item);
         _currentItemIndex = _items.Count -1;
         ToggleEquippedItem();
     }

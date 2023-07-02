@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Key : MonoBehaviour
+public class Key : MonoBehaviour, IItem
 {
     [SerializeField] private float _useRange = 1.0f;
 
