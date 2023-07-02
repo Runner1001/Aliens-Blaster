@@ -116,7 +116,6 @@ GameObject:
   - component: {fileID: 5475063970682911828}
   - component: {fileID: 2084598653}
   - component: {fileID: 1005402777870254512}
-  - component: {fileID: 7897692793302859090}
   - component: {fileID: 7048973287001065257}
   m_Layer: 7
   m_Name: Player
@@ -503,20 +502,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hurtSfx: {fileID: 8300000, guid: b922c8c68d330144db4b2a2ad6f80f69, type: 3}
   _knockbackForce: 400
---- !u!114 &7897692793302859090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5475063970682911834}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c415cf13faed3884d9dfbb95dd5f8f2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _blasetShotPrefab: {fileID: 5360413542486495321, guid: bf62bb788a5036b4bb549ab07d1fc81a, type: 3}
-  _firePoint: {fileID: 112537459}
 --- !u!114 &7048973287001065257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -868,6 +853,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: -1826447705
       objectReference: {fileID: 0}
+    - target: {fileID: 1582240137606865927, guid: 691aa0bbcaf112744846774c2a8b4e6b, type: 3}
+      propertyPath: m_Name
+      value: Blaster
+      objectReference: {fileID: 0}
     - target: {fileID: 2020908068678792848, guid: 691aa0bbcaf112744846774c2a8b4e6b, type: 3}
       propertyPath: m_SortingLayer
       value: 1
@@ -1101,13 +1090,35 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1776174814450263652, guid: 691aa0bbcaf112744846774c2a8b4e6b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 112537459}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1582240137606865927, guid: 691aa0bbcaf112744846774c2a8b4e6b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 463021162}
   m_SourcePrefab: {fileID: 100100000, guid: 691aa0bbcaf112744846774c2a8b4e6b, type: 3}
 --- !u!4 &383251887300535347 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 383251888667542849, guid: 691aa0bbcaf112744846774c2a8b4e6b, type: 3}
   m_PrefabInstance: {fileID: 1905074546}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1582240138403054965 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1582240137606865927, guid: 691aa0bbcaf112744846774c2a8b4e6b, type: 3}
+  m_PrefabInstance: {fileID: 1905074546}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &463021162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582240138403054965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c415cf13faed3884d9dfbb95dd5f8f2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _blasetShotPrefab: {fileID: 5360413542486495321, guid: bf62bb788a5036b4bb549ab07d1fc81a, type: 3}
+  _firePoint: {fileID: 112537459}
 --- !u!4 &1776174814206134038 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1776174814450263652, guid: 691aa0bbcaf112744846774c2a8b4e6b, type: 3}
