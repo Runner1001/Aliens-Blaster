@@ -1185,25 +1185,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a2a900fc78cc704e938ae2fb6833f63, type: 3}
---- !u!1 &715115622 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6164513575123026213, guid: 3b9be2bc67bccf34dae22601fe613349, type: 3}
-  m_PrefabInstance: {fileID: 6164513576746569847}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &715115626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 715115622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f7b361b532c7354db44c5dd4f8b80e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _blasterShotPrefab: {fileID: 5360413542486495321, guid: bf62bb788a5036b4bb549ab07d1fc81a, type: 3}
-  _blasterImpactExplosionPrefab: {fileID: -1018590910382021216, guid: 1d82c2e25fed8fc458376d6c6e0ab0ac, type: 3}
 --- !u!1001 &720985478
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4419,10 +4400,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6164513575123026213, guid: 3b9be2bc67bccf34dae22601fe613349, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 715115626}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b9be2bc67bccf34dae22601fe613349, type: 3}
 --- !u!1001 &6426306624569992657
 PrefabInstance:

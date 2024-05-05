@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6164513575123026210}
   - component: {fileID: 6164513575123026211}
   - component: {fileID: 6164513575123026212}
+  - component: {fileID: 715115626}
   m_Layer: 0
   m_Name: GameManager & PlayerInputManager
   m_TagString: Untagged
@@ -31,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6164513575123026211
 MonoBehaviour:
@@ -89,3 +90,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d06fa4f1585056640aa54976f30dc421, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AllGameNames: []
+--- !u!114 &715115626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6164513575123026213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f7b361b532c7354db44c5dd4f8b80e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _blasterShotPrefab: {fileID: 5360413542486495321, guid: bf62bb788a5036b4bb549ab07d1fc81a, type: 3}
+  _blasterImpactExplosionPrefab: {fileID: -1018590910382021216, guid: 1d82c2e25fed8fc458376d6c6e0ab0ac, type: 3}
