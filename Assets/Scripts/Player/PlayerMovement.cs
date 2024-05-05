@@ -8,8 +8,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _maxSpeed = 5;
     [SerializeField] private float _groundAcceleration = 20;
     [SerializeField] private float _snowAcceleration = 1;
-    [SerializeField]private Collider2D _duckCollider;
-    [SerializeField]private Collider2D _standingCollider;
+    [SerializeField] private Collider2D _duckCollider;
+    [SerializeField] private Collider2D _standingCollider;
 
     private Rigidbody2D _rb;
     private Animator _anim;
@@ -32,7 +32,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        Movement();
+        if (GameManager.CinematicPlaying == false)
+        {
+            Movement();
+        }
+
         UpdateDirection();
     }
 
@@ -51,15 +55,15 @@ public class PlayerMovement : MonoBehaviour
 
         //_horizontal = Mathf.Lerp(_horizontal, desiredHorizontal, Time.deltaTime * acceleration);
 
-        if(desiredHorizontal > _horizontal)
+        if (desiredHorizontal > _horizontal)
         {
             _horizontal += acceleration * Time.deltaTime;
-            if(_horizontal > desiredHorizontal )
+            if (_horizontal > desiredHorizontal)
             {
                 _horizontal = desiredHorizontal;
             }
         }
-        else if(desiredHorizontal < _horizontal)
+        else if (desiredHorizontal < _horizontal)
         {
             _horizontal -= acceleration * Time.deltaTime;
             if (_horizontal < desiredHorizontal)

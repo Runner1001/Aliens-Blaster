@@ -21,6 +21,7 @@ public class Blaster : MonoBehaviour, IItem
 
     public void Use()
     {
-        Fire();
+        if(GameManager.CinematicPlaying == false)
+            Fire();
     }
 }

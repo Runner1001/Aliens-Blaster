@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6164513575123026211}
   - component: {fileID: 6164513575123026212}
   - component: {fileID: 715115626}
+  - component: {fileID: 6846610257157032656}
   m_Layer: 0
   m_Name: GameManager & PlayerInputManager
   m_TagString: Untagged
@@ -105,3 +106,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blasterShotPrefab: {fileID: 5360413542486495321, guid: bf62bb788a5036b4bb549ab07d1fc81a, type: 3}
   _blasterImpactExplosionPrefab: {fileID: -1018590910382021216, guid: 1d82c2e25fed8fc458376d6c6e0ab0ac, type: 3}
+--- !u!114 &6846610257157032656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6164513575123026213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 020e1d5c309267a488a383b25de8ff55, type: 2}
+    - {fileID: 11400000, guid: cf201838108e802449045a9b16db8057, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6164513575123026212}
+          m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+          m_MethodName: ToggleCinematic
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6164513575123026212}
+          m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+          m_MethodName: ToggleCinematic
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2

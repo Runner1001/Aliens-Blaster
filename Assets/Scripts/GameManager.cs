@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     private GameData _gameData;
 
     public static GameManager Instance { get; private set; }
+    public static bool CinematicPlaying { get; private set; }
 
     void Awake()
     {
@@ -107,4 +108,6 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetString("AllGameNames", commaSeparatedGameNames);
         PlayerPrefs.Save();
     }
+
+    public void ToggleCinematic(bool cinematicPlaying) => CinematicPlaying = cinematicPlaying;
 }
