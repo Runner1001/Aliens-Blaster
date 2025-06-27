@@ -15,11 +15,15 @@ public class PlayerMovement : MonoBehaviour
     private Animator _anim;
     private ReadPlayerInput _readPlayerInput;
     private GroundCheck _groundCheck;
+    private WallCheck _wallCheck;
     private PlayerAnimation _playerAnimation;
     private float _horizontal;
 
     public float Horizontal => _horizontal;
     public Vector2 Direction { get; private set; } = Vector2.right;
+    public bool IsDucking { get; private set; }
+    public Collider2D DuckCollider => _duckCollider;
+    public Collider2D StandingCollider => _standingCollider;
 
     void Awake()
     {
@@ -28,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
         _readPlayerInput = GetComponent<ReadPlayerInput>();
         _groundCheck = GetComponent<GroundCheck>();
         _playerAnimation = GetComponent<PlayerAnimation>();
+        _wallCheck = GetComponent<WallCheck>();
     }
 
     void Update()
@@ -45,13 +50,13 @@ public class PlayerMovement : MonoBehaviour
         var desiredHorizontal = _readPlayerInput.Horizontal * _maxSpeed;
         var acceleration = _groundCheck.IsOnSnow ? _snowAcceleration : _groundAcceleration;
 
-        bool isDucking = _playerAnimation.IsDucking;
+        IsDucking = _playerAnimation.IsDucking;
 
-        if (isDucking)
+        if (IsDucking)
             desiredHorizontal = 0;
 
-        _duckCollider.enabled = isDucking;
-        _standingCollider.enabled = !isDucking;
+        _duckCollider.enabled = IsDucking;
+        _standingCollider.enabled = !IsDucking;
 
         //_horizontal = Mathf.Lerp(_horizontal, desiredHorizontal, Time.deltaTime * acceleration);
 
@@ -70,6 +75,15 @@ public class PlayerMovement : MonoBehaviour
             {
                 _horizontal = desiredHorizontal;
             }
+        }
+
+        if(desiredHorizontal > 0 && _wallCheck.IsTouchingRightWall)
+        {
+            _horizontal = 0;
+        }
+        else if(desiredHorizontal < 0 && _wallCheck.IsTouchingLeftWall)
+        {
+            _horizontal = 0;
         }
 
         _rb.velocity = new Vector2(_horizontal, _rb.velocity.y);

@@ -507,6 +507,7 @@ Transform:
   - {fileID: 273816705}
   - {fileID: 501039794}
   - {fileID: 1112093547}
+  - {fileID: 236115577}
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -733,6 +734,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoldCoin (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 2412166630498717878, guid: 47db152dc5b7b5b40a5a6d6d6cd2be83, type: 3}
+      propertyPath: m_Volume
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -941,6 +946,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoldCoin (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2412166630498717878, guid: 47db152dc5b7b5b40a5a6d6d6cd2be83, type: 3}
+      propertyPath: m_Volume
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1027,6 +1036,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 233430616}
   m_CullTransparentMesh: 1
+--- !u!4 &236115577 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 143106450328388044, guid: 352e57416ff67e743b576d93790fe724, type: 3}
+  m_PrefabInstance: {fileID: 1089982323}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &238136608
 GameObject:
   m_ObjectHideFlags: 0
@@ -2232,6 +2246,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoldCoin (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 2412166630498717878, guid: 47db152dc5b7b5b40a5a6d6d6cd2be83, type: 3}
+      propertyPath: m_Volume
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2381,6 +2399,10 @@ PrefabInstance:
     - target: {fileID: 2412166630498717876, guid: 47db152dc5b7b5b40a5a6d6d6cd2be83, type: 3}
       propertyPath: m_Name
       value: GoldCoin (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2412166630498717878, guid: 47db152dc5b7b5b40a5a6d6d6cd2be83, type: 3}
+      propertyPath: m_Volume
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3354,6 +3376,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoldCoin (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2412166630498717878, guid: 47db152dc5b7b5b40a5a6d6d6cd2be83, type: 3}
+      propertyPath: m_Volume
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3364,6 +3390,67 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2412166630498717873, guid: 47db152dc5b7b5b40a5a6d6d6cd2be83, type: 3}
   m_PrefabInstance: {fileID: 1067011999}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1089982323
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 96288523}
+    m_Modifications:
+    - target: {fileID: 143106450328388044, guid: 352e57416ff67e743b576d93790fe724, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 143106450328388044, guid: 352e57416ff67e743b576d93790fe724, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 21.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 143106450328388044, guid: 352e57416ff67e743b576d93790fe724, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.4213243
+      objectReference: {fileID: 0}
+    - target: {fileID: 143106450328388044, guid: 352e57416ff67e743b576d93790fe724, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 143106450328388044, guid: 352e57416ff67e743b576d93790fe724, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 143106450328388044, guid: 352e57416ff67e743b576d93790fe724, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 143106450328388044, guid: 352e57416ff67e743b576d93790fe724, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 143106450328388044, guid: 352e57416ff67e743b576d93790fe724, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 143106450328388044, guid: 352e57416ff67e743b576d93790fe724, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 143106450328388044, guid: 352e57416ff67e743b576d93790fe724, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 143106450328388044, guid: 352e57416ff67e743b576d93790fe724, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5301669923446733909, guid: 352e57416ff67e743b576d93790fe724, type: 3}
+      propertyPath: m_Name
+      value: Grass Platform 2 (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 352e57416ff67e743b576d93790fe724, type: 3}
 --- !u!1 &1112093545
 GameObject:
   m_ObjectHideFlags: 0
@@ -3904,6 +3991,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoldCoin (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 2412166630498717878, guid: 47db152dc5b7b5b40a5a6d6d6cd2be83, type: 3}
+      propertyPath: m_Volume
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3969,6 +4060,10 @@ PrefabInstance:
     - target: {fileID: 2412166630498717876, guid: 47db152dc5b7b5b40a5a6d6d6cd2be83, type: 3}
       propertyPath: m_Name
       value: GoldCoin (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2412166630498717878, guid: 47db152dc5b7b5b40a5a6d6d6cd2be83, type: 3}
+      propertyPath: m_Volume
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4129,6 +4224,10 @@ PrefabInstance:
     - target: {fileID: 2412166630498717876, guid: 47db152dc5b7b5b40a5a6d6d6cd2be83, type: 3}
       propertyPath: m_Name
       value: GoldCoin (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2412166630498717878, guid: 47db152dc5b7b5b40a5a6d6d6cd2be83, type: 3}
+      propertyPath: m_Volume
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5660,6 +5759,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoldCoin (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 2412166630498717878, guid: 47db152dc5b7b5b40a5a6d6d6cd2be83, type: 3}
+      propertyPath: m_Volume
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5678,9 +5781,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1947384249, guid: 934083f211ab2eb48a7e07a812b1e421, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5475063970682911825, guid: 934083f211ab2eb48a7e07a812b1e421, type: 3}
+      propertyPath: _groundCheckOffset
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5475063970682911829, guid: 934083f211ab2eb48a7e07a812b1e421, type: 3}
+      propertyPath: m_Volume
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 5475063970682911834, guid: 934083f211ab2eb48a7e07a812b1e421, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5475063970682911836, guid: 934083f211ab2eb48a7e07a812b1e421, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5475063970682911839, guid: 934083f211ab2eb48a7e07a812b1e421, type: 3}
       propertyPath: m_RootOrder
@@ -5729,13 +5848,46 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5475063970682911834, guid: 934083f211ab2eb48a7e07a812b1e421, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1947384250}
   m_SourcePrefab: {fileID: 100100000, guid: 934083f211ab2eb48a7e07a812b1e421, type: 3}
 --- !u!1 &1947384235 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5475063970682911834, guid: 934083f211ab2eb48a7e07a812b1e421, type: 3}
   m_PrefabInstance: {fileID: 1927004214}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1947384240 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5475063970682911824, guid: 934083f211ab2eb48a7e07a812b1e421, type: 3}
+  m_PrefabInstance: {fileID: 1927004214}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1947384235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 396c8e7684b39aa4dbba233c607d37d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1947384250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1947384235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f8792fad365484383bafef9291705d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallDetectionDistance: 0.5
+  numberOfPoints: 5
+  player: {fileID: 1947384240}
+  buffer: 0.1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &1974467378
 GameObject:
   m_ObjectHideFlags: 0
@@ -6014,6 +6166,10 @@ PrefabInstance:
     - target: {fileID: 2412166630498717876, guid: 47db152dc5b7b5b40a5a6d6d6cd2be83, type: 3}
       propertyPath: m_Name
       value: GoldCoin (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2412166630498717878, guid: 47db152dc5b7b5b40a5a6d6d6cd2be83, type: 3}
+      propertyPath: m_Volume
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6635,6 +6791,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoldCoin
       objectReference: {fileID: 0}
+    - target: {fileID: 2412166630498717878, guid: 47db152dc5b7b5b40a5a6d6d6cd2be83, type: 3}
+      propertyPath: m_Volume
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6846,6 +7006,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1821522790, guid: 1c2c2c0eefe0a444e932837806b3ba44, type: 3}
+      propertyPath: m_Volume
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 5940846094373644121, guid: 1c2c2c0eefe0a444e932837806b3ba44, type: 3}
       propertyPath: m_Name
       value: Frog
@@ -6972,6 +7136,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 221265101149780814, guid: cf0cfb3013af3764e9e0af058637e90b, type: 3}
+      propertyPath: m_Volume
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 8442257733369403259, guid: cf0cfb3013af3764e9e0af058637e90b, type: 3}
       propertyPath: m_Name
       value: Water
