@@ -57,7 +57,7 @@ public class WallCheck : MonoBehaviour
             origin += (Vector3)direction * wallDetectionDistance;
 
             int hits = Physics2D.Raycast(origin, direction,
-            new ContactFilter2D() { layerMask = layerMask }, results, 0.1f);
+            new ContactFilter2D() { layerMask = layerMask, useTriggers = true }, results, 0.1f);
 
             for (int hitIndex = 0; hitIndex < hits; hitIndex++)
             {
