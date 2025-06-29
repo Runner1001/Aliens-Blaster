@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class BeeEncounter : MonoBehaviour
+public class BeeEncounter : MonoBehaviour, ITakeDamage
 {
     [SerializeField] List<Transform> lightnings;
     [SerializeField] float delayBeforeDamage = 2.5f;
@@ -14,13 +15,26 @@ public class BeeEncounter : MonoBehaviour
     [SerializeField] float lightningRadius = 1.0f;
     [SerializeField] LayerMask playerLayer;
     [SerializeField] int numberOfLightnings = 1;
+    [SerializeField] int health = 3;
+    [SerializeField] GameObject bee;
+    [SerializeField] Animator beeAnimator;
+    [SerializeField] Transform[] beeDestinations;
+    [SerializeField] float minIdleTime = 1.0f;
+    [SerializeField] float maxIdleTime = 2.0f;
+    [SerializeField] GameObject beeLaser;
 
     private Collider2D[] playerHitResults = new Collider2D[10];
     private List<Transform> activeLightnings;
+    private bool shotStarted = false;
+    private bool shotFinished = false;
 
     void OnEnable()
     {
-        StartCoroutine(StartEncounter());
+        StartCoroutine(StartLightning());
+        StartCoroutine(StartMovement());
+        var wrapper = GetComponentInChildren<ShootAnimationWrapper>();
+        wrapper.OnShoot += () => shotStarted = true;
+        wrapper.OnReload += () => shotFinished = true;
     }
 
     void OnValidate()
@@ -30,7 +44,44 @@ public class BeeEncounter : MonoBehaviour
 
     }
 
-    private IEnumerator StartEncounter()
+    private IEnumerator StartMovement()
+    {
+        beeLaser.SetActive(false);
+        GrabBag<Transform> grabBag = new GrabBag<Transform>(beeDestinations);
+
+        while (true)
+        {
+            var destination = grabBag.Grab();
+            if (destination == null)
+            {
+                Debug.LogError("No destination found for bee movement.");
+                yield break;
+            }
+
+            beeAnimator.SetBool("Move", true);
+
+            while (Vector2.Distance(bee.transform.position, destination.position) > 0.1f)
+            {
+                bee.transform.position = Vector2.MoveTowards(bee.transform.position, destination.position, Time.deltaTime);
+                yield return null;
+            }
+
+            beeAnimator.SetBool("Move", false);
+
+            yield return new WaitForSeconds(Random.Range(minIdleTime, maxIdleTime));
+            beeAnimator.SetTrigger("Fire");
+
+            yield return new WaitUntil(() => shotStarted);
+            shotStarted = false;
+            beeLaser.SetActive(true);
+
+            yield return new WaitUntil(() => shotFinished);
+            shotFinished = false;
+            beeLaser.SetActive(false);
+        }
+    }
+
+    private IEnumerator StartLightning()
     {
         foreach (var lightning in lightnings)
         {
@@ -42,7 +93,7 @@ public class BeeEncounter : MonoBehaviour
         {
             for (int i = 0; i < numberOfLightnings; i++)
             {
-                yield return SpawnNewLightning();               
+                yield return SpawnNewLightning();
             }
 
             yield return new WaitUntil(() => activeLightnings.All(t => !t.gameObject.activeSelf));
@@ -52,7 +103,7 @@ public class BeeEncounter : MonoBehaviour
 
     private IEnumerator SpawnNewLightning()
     {
-        if(activeLightnings.Count >= lightnings.Count)
+        if (activeLightnings.Count >= lightnings.Count)
         {
             Debug.LogError("All lightnings are already active. Cannot spawn new lightning.");
             yield break;
@@ -96,6 +147,15 @@ public class BeeEncounter : MonoBehaviour
             {
                 player.TakeDamage(Vector2.zero);
             }
+        }
+    }
+
+    public void TakeDamage()
+    {
+        health--;
+        if (health <= 0)
+        {
+            bee.SetActive(false);
         }
     }
 }
