@@ -22,7 +22,7 @@ public class MovingPlatform : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        var player = collision.gameObject.GetComponent<Player>();
+        var player = collision.gameObject.GetComponent<PlayerAIO>();
 
         if (player != null)
             player.transform.SetParent(transform);
@@ -30,7 +30,7 @@ public class MovingPlatform : MonoBehaviour
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        var player = collision.gameObject.GetComponent<Player>();
+        var player = collision.gameObject.GetComponent<PlayerAIO>();
 
         if (player != null)
             player.transform.SetParent(null);

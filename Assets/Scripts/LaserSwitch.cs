@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,7 @@ public class LaserSwitch : MonoBehaviour
     [SerializeField] private UnityEvent _off;
 
     private SpriteRenderer _sr;
-    private bool _isOn;
+    private LaserSwitchData _data;
 
     void Awake()
     {
@@ -21,7 +22,7 @@ public class LaserSwitch : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        var player = other.GetComponent<Player>();
+        var player = other.GetComponent<PlayerAIO>();
 
         if (player == null)
             return;
@@ -40,21 +41,39 @@ public class LaserSwitch : MonoBehaviour
 
     private void TurnOn()
     {
-        if(!_isOn)
+        if(!_data.IsOn)
         {
-            _isOn = true;
-            _on.Invoke();
-            _sr.sprite = _onSprite;
+            _data.IsOn = true;
+            UpdateSwitchState();
         }
     }
 
     private void TurnOff()
     {
-        if(_isOn)
+        if(_data.IsOn)
         {
-            _isOn = false;
+            _data.IsOn = false;
+            UpdateSwitchState();
+        }
+    }
+
+    private void UpdateSwitchState()
+    {
+        if(_data.IsOn)
+        {
+            _on.Invoke();
+            _sr.sprite = _onSprite;
+        }
+        else
+        {
             _off.Invoke();
             _sr.sprite = _offSprite;
-        }
+        }          
+    }
+
+    public void Bind(LaserSwitchData data)
+    {
+        _data = data;
+        UpdateSwitchState();
     }
 }

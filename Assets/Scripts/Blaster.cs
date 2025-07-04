@@ -5,18 +5,18 @@ public class Blaster : MonoBehaviour, IItem
     [SerializeField] private BlasterShot _blasetShotPrefab;
     [SerializeField] private Transform _firePoint;
 
-    private PlayerMovement _playerMovement;
+    private PlayerAIO _playerAIO;
 
 
     void Awake()
     {
-        _playerMovement = GetComponentInParent<PlayerMovement>();
+        _playerAIO = GetComponentInParent<PlayerAIO>();
     }
 
     private void Fire()
     {
         BlasterShot shot = PoolManager.Instance.GetBlasterShot();
-        shot.Launch(_playerMovement.Direction, _firePoint.position);
+        shot.Launch(_playerAIO.Direction, _firePoint.position);
     }
 
     public void Use()

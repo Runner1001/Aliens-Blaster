@@ -26,6 +26,12 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        _playerInput.actions["Fire"].performed -= UseEquippedItem;
+        _playerInput.actions["EquipNext"].performed -= EquipNext;
+    }
+
     private void EquipNext(InputAction.CallbackContext obj)
     {
         _currentItemIndex++;

@@ -10,14 +10,14 @@ public class PlayerPanel : MonoBehaviour
     [SerializeField] private TMP_Text _coinText;
     [SerializeField] private Image[] _hearts;
 
-    private Player _player;
+    private PlayerAIO _player;
 
 
-    public void Bind(Player player)
+    public void Bind(PlayerAIO player)
     {
         _player = player;
-        _player.OnCoinChanged += UpdateCoins;
-        _player.OnHealthChanged += UpdateHealth;
+        _player.CoinsChanged += UpdateCoins;
+        _player.HealthChanged += UpdateHealth;
         UpdateCoins();
         UpdateHealth();
     }

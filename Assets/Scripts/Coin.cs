@@ -6,17 +6,26 @@ public class Coin : MonoBehaviour
 {
     [SerializeField] private AudioClip _coinClip;
 
+    CoinData _data;
+
+    public void Bind(CoinData data)
+    {
+        _data = data;
+
+        if(data.IsCollected)
+            gameObject.SetActive(false);
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
-        var player = other.GetComponent<Player>();
+        var player = other.GetComponent<PlayerAIO>();
 
         if (player)
         {
             GetComponent<AudioSource>().PlayOneShot(_coinClip);
-            player.AddCoin();
-            GetComponent<SpriteRenderer>().enabled = false;
-            GetComponent<Collider2D>().enabled = false;
-            //gameObject.SetActive(false);
+            _data.IsCollected = true;
+            player.AddPoint();
+            gameObject.SetActive(false);
         }
     }
 }

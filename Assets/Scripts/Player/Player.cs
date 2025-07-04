@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
-        FindAnyObjectByType<PlayerCanvas>().Bind(this); //refactor
+        //FindAnyObjectByType<PlayerCanvas>().Bind(this); //refactor
 
         _rb = GetComponent<Rigidbody2D>();
         _audioSource = GetComponent<AudioSource>();
@@ -48,6 +48,7 @@ public class Player : MonoBehaviour
     public void AddCoin()
     {
         Coins++;
+        Debug.Log(_playerData.Coins);
         OnCoinChanged?.Invoke();
     }
 
