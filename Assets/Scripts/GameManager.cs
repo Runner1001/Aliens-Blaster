@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     private PlayerInputManager _playerInputManager;
     public GameData _gameData;
+    public List<Item> AllItems;
 
     public static GameManager Instance { get; private set; }
     public static bool CinematicPlaying { get; private set; }
@@ -61,8 +62,7 @@ public class GameManager : MonoBehaviour
 
             Bind<Coin, CoinData>(levelData.CoinDatas);
             Bind<LaserSwitch, LaserSwitchData>(levelData.LaserSwitchDatas);
-            //BindCoins(levelData);
-            //BindLaserSwitches(levelData);
+            Bind<PlayerInventory, PlayerData>(_gameData.PlayerDatas);
 
             var allPlayer = FindObjectsOfType<PlayerAIO>();
             foreach (var player in allPlayer)
@@ -95,41 +95,6 @@ public class GameManager : MonoBehaviour
             instance.Bind(data);
         }
     }
-
-    private void BindCoins(LevelData levelData)
-    {
-        var allCoins = FindObjectsOfType<Coin>();
-        foreach (var coin in allCoins)
-        {
-            var data = levelData.CoinDatas.FirstOrDefault(t => t.Name == coin.name);
-
-            if (data == null)
-            {
-                data = new CoinData { Name = coin.name, IsCollected = false };
-                levelData.CoinDatas.Add(data);
-            }
-
-            coin.Bind(data);
-        }
-    }
-
-    private void BindLaserSwitches(LevelData levelData)
-    {
-        var allLaserSwitches = FindObjectsOfType<LaserSwitch>();
-        foreach (var laserSwitch in allLaserSwitches)
-        {
-            var data = levelData.LaserSwitchDatas.FirstOrDefault(t => t.Name == laserSwitch.name);
-
-            if (data == null)
-            {
-                data = new LaserSwitchData { Name = laserSwitch.name, IsOn = false };
-                levelData.LaserSwitchDatas.Add(data);
-            }
-
-            laserSwitch.Bind(data);
-        }
-    }
-
     public void SaveGame()
     {
         if (string.IsNullOrWhiteSpace(_gameData.GameName))
@@ -200,6 +165,21 @@ public class GameManager : MonoBehaviour
     public void ReloadGame()
     {
         LoadGame(_gameData.GameName);
+    }
+
+    public Item GetItem(string itemName)
+    {
+        string prefabName = itemName.Substring(0,itemName.IndexOf("_"));
+        var prefab = AllItems.FirstOrDefault(t => t.name == prefabName);
+        if(prefab == null)
+        {
+            Debug.LogError($"Item prefab {prefabName} not found in AllItems list.");
+            return null;
+        }
+
+        var newInstance = Instantiate(prefab);
+        newInstance.name = itemName;
+        return newInstance;
     }
 }
 

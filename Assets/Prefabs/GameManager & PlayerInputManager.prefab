@@ -92,6 +92,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AllGameNames: []
+  _gameData:
+    PlayerDatas: []
+    GameName: 
+    CurrentLevelName: 
+    LevelDatas: []
+  AllItems:
+  - {fileID: 7467728962509030160, guid: 2d2f43fcd0235af41b4c54b704536aa5, type: 3}
 --- !u!114 &715115626
 MonoBehaviour:
   m_ObjectHideFlags: 0

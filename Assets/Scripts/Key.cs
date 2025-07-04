@@ -1,24 +1,12 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class Key : MonoBehaviour, IItem
+public class Key : Item
 {
     [SerializeField] private float _useRange = 1.0f;
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        var playerInventory = other.GetComponent<PlayerInventory>();
-        if (playerInventory != null)
-        {
-            playerInventory.PickUp(this);
-            
-        }
-    }
-
-    public void Use()
+    public override void Use()
     {
         var hits = Physics2D.OverlapCircleAll(transform.position, _useRange);
 
