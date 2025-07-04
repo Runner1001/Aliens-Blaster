@@ -15,21 +15,26 @@ public class BeeEncounter : MonoBehaviour, ITakeDamage
     [SerializeField] float lightningRadius = 1.0f;
     [SerializeField] LayerMask playerLayer;
     [SerializeField] int numberOfLightnings = 1;
-    [SerializeField] int health = 3;
     [SerializeField] GameObject bee;
     [SerializeField] Animator beeAnimator;
+    [SerializeField] Rigidbody2D beeRigidBody;
     [SerializeField] Transform[] beeDestinations;
     [SerializeField] float minIdleTime = 1.0f;
     [SerializeField] float maxIdleTime = 2.0f;
     [SerializeField] GameObject beeLaser;
+    [SerializeField] int maxHealth = 10;
+    [SerializeField] Water water;
+    [SerializeField] Collider2D groundCollider;
 
     private Collider2D[] playerHitResults = new Collider2D[10];
     private List<Transform> activeLightnings;
     private bool shotStarted = false;
     private bool shotFinished = false;
+    int currentHealth;
 
     void OnEnable()
     {
+        currentHealth = maxHealth;
         StartCoroutine(StartLightning());
         StartCoroutine(StartMovement());
         var wrapper = GetComponentInChildren<ShootAnimationWrapper>();
@@ -152,10 +157,65 @@ public class BeeEncounter : MonoBehaviour, ITakeDamage
 
     public void TakeDamage()
     {
-        health--;
-        if (health <= 0)
+        currentHealth--;
+        if(currentHealth == maxHealth / 2)
         {
-            bee.SetActive(false);
+            StartCoroutine(ToggleFlood(true));
         }
+        if (currentHealth <= 0)
+        {
+            StopAllCoroutines();
+            StartCoroutine(ToggleFlood(false));
+            beeAnimator.SetBool("Dead", true);
+            beeRigidBody.bodyType = RigidbodyType2D.Dynamic;
+            foreach(var collider in bee.GetComponentsInChildren<Collider2D>())
+            {
+                collider.gameObject.layer = LayerMask.NameToLayer("Dead");
+            }
+        }
+        else
+        {
+            beeAnimator.SetTrigger("Hit");
+        }
+    }
+
+    private IEnumerator ToggleFlood(bool enableFlood)
+    {
+        float initialWaterY = water.transform.position.y;
+        float targetWaterY = enableFlood ? initialWaterY + 1f : initialWaterY - 1f;
+        float duration = 1f;
+        float elapsedTime = 0f;
+        while(elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float progress = elapsedTime / duration;
+            float y = Mathf.Lerp(initialWaterY, targetWaterY, progress);
+            var destination = new Vector3(water.transform.position.x, y, water.transform.position.z);
+            water.transform.position = destination;
+            yield return null;
+        }
+        groundCollider.enabled = !enableFlood;
+        water.SetSpeed(enableFlood ? 5f : 0f);
+    }
+
+    [ContextMenu("Half Health")]
+    private void HalfHealth()
+    {
+        currentHealth = maxHealth / 2;
+        currentHealth++;
+        TakeDamage();
+    }
+
+    [ContextMenu("Kill")]
+    private void Kill()
+    {
+        currentHealth = 1;
+        TakeDamage();
+    }
+
+    [ContextMenu("Full Health")]
+    private void FullHealth()
+    {
+        currentHealth = maxHealth;
     }
 }

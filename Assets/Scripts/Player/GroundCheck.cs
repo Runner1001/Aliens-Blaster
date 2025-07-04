@@ -7,14 +7,17 @@ public class GroundCheck : MonoBehaviour
 {
     [SerializeField] float _footOffset = 0.5f;
     [SerializeField] private LayerMask _groundLayerMask;
+    [SerializeField] private LayerMask _waterLayerMask;
     [SerializeField] float _groundCheckOffset = 0.5f;
 
     private bool _isGrounded;
     private bool _isOnSnow;
+    private bool _isInWater;
     RaycastHit2D[] results = new RaycastHit2D[100];
 
     public bool IsGrounded => _isGrounded;
     public bool IsOnSnow => _isOnSnow;
+    public bool IsInWater => _isInWater;
 
     void Update()
     {
@@ -25,6 +28,7 @@ public class GroundCheck : MonoBehaviour
     {
         _isGrounded = false;
         _isOnSnow = false;
+        _isInWater = false;
 
         //Check center
         Vector2 origin = new Vector2(transform.position.x, transform.position.y - _groundCheckOffset);
@@ -42,7 +46,7 @@ public class GroundCheck : MonoBehaviour
     private void CheckGrounding(Vector2 origin)
     {
         int hits = Physics2D.Raycast(origin, Vector2.down, 
-            new ContactFilter2D() { layerMask = _groundLayerMask, useTriggers = true }, results, 0.1f);
+            new ContactFilter2D() { layerMask = _groundLayerMask, useLayerMask = true, useTriggers = true }, results, 0.1f);
 
         for (int i = 0; i < hits; i++)
         {
@@ -51,12 +55,14 @@ public class GroundCheck : MonoBehaviour
             if (!hit.collider)
                 continue;
 
-            if (hit.collider.isTrigger && hit.collider.GetComponent<Water>() == null)
-                continue;
-
-
             _isGrounded = true;
             _isOnSnow |= hit.collider.CompareTag("Snow");
+        }
+
+        var water = Physics2D.OverlapPoint(origin, _waterLayerMask);
+        if(water != null)
+        {
+            _isInWater = true;
         }
     }
 

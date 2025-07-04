@@ -86,7 +86,10 @@ public class PlayerMovement : MonoBehaviour
             _horizontal = 0;
         }
 
-        _rb.velocity = new Vector2(_horizontal, _rb.velocity.y);
+        if(_groundCheck.IsInWater)
+            _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y);
+        else
+            _rb.velocity = new Vector2(_horizontal, _rb.velocity.y);
     }
 
     private void UpdateDirection()

@@ -38,7 +38,7 @@ public class PlayerJump : MonoBehaviour
     {
         _vertical = _rb.velocity.y;
 
-        if (_groundCheck.IsGrounded && _rb.velocity.y <= 0)
+        if ((_groundCheck.IsGrounded || _groundCheck.IsInWater) && _rb.velocity.y <= 0)
             _jumpsRemaining = maxJumps;
 
         if (_readPlayerInput.JumpWasPerformed && _jumpsRemaining > 0)
@@ -53,7 +53,7 @@ public class PlayerJump : MonoBehaviour
         if (_readPlayerInput.IsJumping && _jumpEndTime > Time.time)
             _vertical = _jumpVelocity;
 
-        _rb.velocity = new Vector2(_playerMovement.Horizontal, _vertical);
+        _rb.velocity = new Vector2(/*_playerMovement.Horizontal*/_rb.velocity.x, _vertical);
     }
 
     public void StopJump()
