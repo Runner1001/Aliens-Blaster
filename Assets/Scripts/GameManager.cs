@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        if(Instance != null)
+        if (Instance != null)
         {
             Destroy(gameObject);
             return;
@@ -43,14 +43,14 @@ public class GameManager : MonoBehaviour
 
     private void HandleLoadedScene(Scene arg0, LoadSceneMode arg1)
     {
-        if(arg0.buildIndex == 0)
+        if (arg0.buildIndex == 0)
         {
             _playerInputManager.joinBehavior = PlayerJoinBehavior.JoinPlayersManually;
-        }      
+        }
         else
         {
             _gameData.CurrentLevelName = arg0.name;
-            _playerInputManager.joinBehavior= PlayerJoinBehavior.JoinPlayersWhenButtonIsPressed;
+            _playerInputManager.joinBehavior = PlayerJoinBehavior.JoinPlayersWhenButtonIsPressed;
 
             var levelData = _gameData.LevelDatas.FirstOrDefault(t => t.LevelName == arg0.name);
             if (levelData == null)
@@ -59,8 +59,10 @@ public class GameManager : MonoBehaviour
                 _gameData.LevelDatas.Add(levelData);
             }
 
-            BindCoins(levelData);
-            BindLaserSwitches(levelData);
+            Bind<Coin, CoinData>(levelData.CoinDatas);
+            Bind<LaserSwitch, LaserSwitchData>(levelData.LaserSwitchDatas);
+            //BindCoins(levelData);
+            //BindLaserSwitches(levelData);
 
             var allPlayer = FindObjectsOfType<PlayerAIO>();
             foreach (var player in allPlayer)
@@ -75,8 +77,23 @@ public class GameManager : MonoBehaviour
                 }
             }
             //SaveGame();
-        }       
-        
+        }
+
+    }
+
+    private void Bind<T, D>(List<D> datas) where T : MonoBehaviour, IBind<D> where D : INamed, new()
+    {
+        var instances = FindObjectsOfType<T>();
+        foreach(var instance in instances)
+        {
+            var data = datas.FirstOrDefault(t => t.Name == instance.name);
+            if(data == null)
+            {
+                data = new D() { Name = instance.name };
+                datas.Add(data);
+            }
+            instance.Bind(data);
+        }
     }
 
     private void BindCoins(LevelData levelData)
@@ -86,7 +103,7 @@ public class GameManager : MonoBehaviour
         {
             var data = levelData.CoinDatas.FirstOrDefault(t => t.Name == coin.name);
 
-            if(data == null)
+            if (data == null)
             {
                 data = new CoinData { Name = coin.name, IsCollected = false };
                 levelData.CoinDatas.Add(data);
@@ -103,7 +120,7 @@ public class GameManager : MonoBehaviour
         {
             var data = levelData.LaserSwitchDatas.FirstOrDefault(t => t.Name == laserSwitch.name);
 
-            if(data == null)
+            if (data == null)
             {
                 data = new LaserSwitchData { Name = laserSwitch.name, IsOn = false };
                 levelData.LaserSwitchDatas.Add(data);
@@ -122,7 +139,7 @@ public class GameManager : MonoBehaviour
 
         PlayerPrefs.SetString(_gameData.GameName, text);
 
-        if(AllGameNames.Contains(_gameData.GameName) == false)
+        if (AllGameNames.Contains(_gameData.GameName) == false)
             AllGameNames.Add(_gameData.GameName);
 
         string commaSeparatedGameNames = string.Join(",", AllGameNames);
@@ -152,7 +169,7 @@ public class GameManager : MonoBehaviour
 
     private PlayerData GetPlayerData(int playerIndex)
     {
-        if(_gameData.PlayerDatas.Count <= playerIndex)
+        if (_gameData.PlayerDatas.Count <= playerIndex)
         {
             var playerData = new PlayerData();
             _gameData.PlayerDatas.Add(playerData);
@@ -184,4 +201,9 @@ public class GameManager : MonoBehaviour
     {
         LoadGame(_gameData.GameName);
     }
+}
+
+public interface INamed
+{
+    string Name { get; set; }
 }

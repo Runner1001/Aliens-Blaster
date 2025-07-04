@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class LaserSwitch : MonoBehaviour
+public class LaserSwitch : MonoBehaviour, IBind<LaserSwitchData>
 {
     [SerializeField] private Sprite _onSprite;
     [SerializeField] private Sprite _offSprite;
