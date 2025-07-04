@@ -10,7 +10,7 @@ public class BouncePlayer : MonoBehaviour
         if (_onlyFromTop && Vector2.Dot(other.contacts[0].normal, Vector2.down) < 0.5f)
             return;
 
-        var player = other.collider.GetComponent<Player>();
+        var player = other.collider.GetComponent<PlayerAIO>();
 
         if (player)
         {

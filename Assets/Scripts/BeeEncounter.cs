@@ -147,7 +147,7 @@ public class BeeEncounter : MonoBehaviour, ITakeDamage
 
         for (int i = 0; i < hits; i++)
         {
-            var player = playerHitResults[i].GetComponent<Player>();
+            var player = playerHitResults[i].GetComponent<PlayerAIO>();
             if (player != null)
             {
                 player.TakeDamage(Vector2.zero);
