@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,11 @@ public class SplineAttackPoints : MonoBehaviour
 {
     [SerializeField] SplineContainer splineContainer;
     [SerializeField] List<float> attackPoints;
+
+    public Queue<float> GetAsQueue()
+    {
+        return new Queue<float>(attackPoints);
+    }
 
     void OnDrawGizmos()
     {

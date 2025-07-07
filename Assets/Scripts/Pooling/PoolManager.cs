@@ -8,9 +8,13 @@ public class PoolManager : MonoBehaviour
 {
     [SerializeField] private BlasterShot _blasterShotPrefab;
     [SerializeField] private ReturnToPool _blasterImpactExplosionPrefab;
+    [SerializeField] private CatBomb _catBombPrefab;
+    [SerializeField] private ReturnToPool _spikePrefab;
 
     ObjectPool<BlasterShot> _blasterShotPool;
     ObjectPool<ReturnToPool> _blasterImpactExplosionPool;
+    ObjectPool<CatBomb> _catBombPool; 
+    ObjectPool<ReturnToPool> _spikePool; 
 
     public static PoolManager Instance { get; private set; }
 
@@ -27,7 +31,25 @@ public class PoolManager : MonoBehaviour
         },
         t => t.gameObject.SetActive(true),
         t => t.gameObject.SetActive(false));
-        
+
+        _catBombPool = new ObjectPool<CatBomb>(() =>
+        {
+            var bomb = Instantiate(_catBombPrefab);
+            bomb.SetPool(_catBombPool);
+            return bomb;
+        },
+        t => t.gameObject.SetActive(true),
+        t => t.gameObject.SetActive(false));
+
+        _spikePool = new ObjectPool<ReturnToPool>(() =>
+        {
+            var shot = Instantiate(_spikePrefab);
+            shot.SetPool(_spikePool);
+            return shot;
+        },
+        t => t.gameObject.SetActive(true),
+        t => t.gameObject.SetActive(false));
+
     }
 
     private BlasterShot AddNewBlasterShotToPool()
@@ -47,5 +69,15 @@ public class PoolManager : MonoBehaviour
         var explosion = _blasterImpactExplosionPool.Get();
         explosion.transform.position = point;
         return explosion;
+    }
+
+    public CatBomb GetCatBomb()
+    {
+        return _catBombPool.Get();
+    }
+
+    public ReturnToPool GetSpike()
+    {
+        return _spikePool.Get();
     }
 }

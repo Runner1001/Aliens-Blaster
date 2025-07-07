@@ -27,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6164513575123026213}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 473.88794, y: 312.38556, z: 5.3375297}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6164513575123026211
 MonoBehaviour:
@@ -113,6 +113,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blasterShotPrefab: {fileID: 5360413542486495321, guid: bf62bb788a5036b4bb549ab07d1fc81a, type: 3}
   _blasterImpactExplosionPrefab: {fileID: -1018590910382021216, guid: 1d82c2e25fed8fc458376d6c6e0ab0ac, type: 3}
+  _catBombPrefab: {fileID: 6171739318396061432, guid: c2d2dc5bcd182d94490c88b1896807fa, type: 3}
+  _spikePrefab: {fileID: 5435469731103783394, guid: 3e69b3c1d9a7893499134ef68a7cda75, type: 3}
 --- !u!114 &6846610257157032656
 MonoBehaviour:
   m_ObjectHideFlags: 0
